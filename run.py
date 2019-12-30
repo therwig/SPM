@@ -34,12 +34,13 @@ pr.add_option("--m2"                    , dest="mass2"       , type="float"     
 pr.add_option("--yrange"                , dest="rangeY"      , type="string"      , default=None , help="Bypass rangeY in env/models")
 pr.add_option("--zrange"                , dest="rangeZ"      , type="string"      , default=None , help="Bypass rangeZ in env/models")
 pr.add_option("--points"                , dest="points"      , action="append"    , default=[]   , help="Points to consider")
+pr.add_option("--toys"                  , dest="toys"        , action="store_true", default=False, help="Evaluate limits using toys")
 
 (options, args) = pr.parse_args()
 
 theDir = os.path.dirname(os.path.realpath(sys.argv[0]))
 if not os.path.exists(theDir+"/init"):
-	functions.cmd(None, "touch "+theDir+"/init")
+    functions.cmd(None, "touch "+theDir+"/init")
 
 SPM = master.SPM(args, options)
 

@@ -85,7 +85,7 @@ class PoolHandler():
                 if not os.path.isdir(importdir+"/"+p+"/"+l): continue
                 for m in os.listdir(importdir+"/"+p+"/"+l):
                     if not m in [self.master.model.name]: continue
-                    print(importdir+"/"+p+"/"+l+"/"+m)
+                    print "Importing from",importdir+"/"+p+"/"+l+"/"+m
                     exists = self.findPackageByImportDir(importdir+"/"+p+"/"+l+"/"+m)
                     if not self.master.options.forceImport and exists: continue
                     if     self.master.options.forceImport and exists: self.deletePackage(exists)
