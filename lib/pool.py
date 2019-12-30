@@ -26,6 +26,13 @@ class Package():
 		m = self.importdir.split("/")[-1]
 		##m = m.replace("_0p1","").replace("_0p2","").replace("_0p3","").replace("_0p4","").replace("_0p5","").replace("_0p6","").replace("_0p7","").replace("_0p8","").replace("_0p9","")
 		self.points = []
+		# for point in [l.strip("\n") for l in os.listdir(self.importdir+"")]:
+		# 	if not os.path.isdir (self.importdir+"/"+point                                   ): continue
+		# 	if not os.path.exists(self.importdir+"/"+point+"/sig_"+m+"_"+point+"/SR.card.txt"): continue
+		# 	cp(self.master, self.importdir+"/"+point+"/sig_"+m+"_"+point+"/SR.card.txt", self.cardsdir+"/"+point+".txt" )
+		# 	cp(self.master, self.importdir+"/"+point+"/common/SR.input.root"           , self.filesdir+"/"+point+".root")
+		# 	replaceInFile(self.cardsdir+"/"+point+".txt", "../common/SR.input.root"        , self.filesdir+"/"+point+".root")
+		# 	self.points.append(point)
 		for point in [l.strip("\n") for l in os.listdir(self.importdir+"/mps")]:
 			if not os.path.isdir (self.importdir+"/mps/"+point                                   ): continue
 			if not os.path.exists(self.importdir+"/mps/"+point+"/sig_"+m+"_"+point+"/SR.card.txt"): continue
@@ -70,6 +77,7 @@ class PoolHandler():
 			for l in os.listdir(importdir+"/"+p):
 				for m in os.listdir(importdir+"/"+p+"/"+l):
 					if not m in [self.master.model.name]: continue
+                                        print(importdir+"/"+p+"/"+l+"/"+m)
 					exists = self.findPackageByImportDir(importdir+"/"+p+"/"+l+"/"+m)
 					if not self.master.options.forceImport and exists: continue
 					if     self.master.options.forceImport and exists: self.deletePackage(exists)
