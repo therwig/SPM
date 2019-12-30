@@ -2,7 +2,7 @@
 ScanPlotMaker
 
 One can run on top of the data cards produced with the SUSY-Interface via the command
-```
+```Shell
 cd <SPM directory>
 python run.py <model> -i <data card directory>
 ```
